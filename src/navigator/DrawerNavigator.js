@@ -5,11 +5,16 @@ import TodoList from '../components/TodoList';
 
 const Drawer = createDrawerNavigator();
 
-const MyDrawer = () => {
+const MyDrawer = (props) => {
+  const {todos, setTodos, settings, setSettings } = props
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Todos" component={TodoList} />
-      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="Todos" component={
+        () => <TodoList todos={todos} setTodos={setTodos} />
+      }/>
+      <Drawer.Screen name="Settings" component={
+        () => <Settings settings={settings} setSettings={setSettings} />
+      }/>
     </Drawer.Navigator>
   );
 }
