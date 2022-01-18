@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 import TodoItem from './TodoItem';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 
 // TODO: Make components for pages
 const TodoList = (props) => {
-  const { todos, setTodos } = props
-  const { colors } = useTheme();
+  const { todos, todoDispatch } = props
 
   return (
-    <ScrollView>
-      { todos.map((item, idx) => {
+    <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+      { todos.map(item => {
         return (
-          <TodoItem 
-            key={idx} 
+          <TodoItem
+            key={item.id}
+            todoDispatch={todoDispatch} 
             title={item.title} 
             description={item.description} 
-            difficulty={item.difficulty}>
+            difficulty={item.difficulty}
+            completed={item.completed}
+            id={item.id}>
           </TodoItem>
         )
       })}
