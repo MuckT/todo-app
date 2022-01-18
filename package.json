@@ -29,12 +29,49 @@
     "@babel/runtime": "^7.16.7",
     "@react-native-community/eslint-config": "^3.0.1",
     "babel-jest": "^27.4.6",
+    "detox": "^19.4.2",
     "eslint": "^8.6.0",
     "jest": "^27.4.7",
+    "jest-html-reporter": "^3.4.2",
+    "jest-junit": "^13.0.0",
     "metro-react-native-babel-preset": "^0.66.2",
     "react-test-renderer": "17.0.2"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runnerConfig": "e2e/config.json",
+    "devices": {
+      "simulator": {
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 12 Pro Max"
+        }
+      }
+    },
+    "apps": {
+      "ios.release": {
+        "type": "ios.app",
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/todo.app",
+        "build": "set -o pipefail && xcodebuild -workspace ios/todo.xcworkspace -scheme todo -configuration Release -sdk iphonesimulator -derivedDataPath ios/build"
+      },
+      "ios.debug": {
+        "type": "ios.app",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/todo.app",
+        "build": "set -o pipefail && xcodebuild -workspace ios/todo.xcworkspace -scheme todo -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+      }
+    },
+    "configurations": {
+      "ios.sim.release": {
+        "device": "simulator",
+        "app": "ios.release"
+      },
+      "ios.sim.debug": {
+        "device": "simulator",
+        "app": "ios.debug"
+      }
+    }
   }
 }
