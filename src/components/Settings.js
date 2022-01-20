@@ -3,7 +3,8 @@ import { View, Text, Switch, StyleSheet } from 'react-native';
 import React, { useContext } from 'react';
 import ThemeContext from "../contexts/ThemeContext"
 import { useTheme } from '@react-navigation/native';
-const Settings = () => {
+const Settings = (props) => {
+  const {settings, setSettings} = props
   const { theme, setTheme } = useContext(ThemeContext)
   const { colors } = useTheme();
 
@@ -14,6 +15,13 @@ const Settings = () => {
         <Switch 
           onValueChange={() => setTheme(theme == "dark" ? "light" : "dark")}
           value={theme === 'dark' ? true : false}
+        />
+      </View>
+      <View style={styles.settingItem}>
+        <Text style={[{ color: colors.text }, styles.text]}> Display completed Items</Text>
+        <Switch 
+          onValueChange={() => setSettings({hideCompleted: !settings.hideCompleted})}
+          value={settings.hideCompleted}
         />
       </View>
     </View>

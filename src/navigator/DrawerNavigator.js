@@ -22,7 +22,7 @@ const MyDrawer = (props) => {
         },
       }}>
       <Drawer.Screen name="Todos" component={
-        () => <TodoList todos={todos} todoDispatch={todoDispatch} />
+        () => <TodoList todos={todos} todoDispatch={todoDispatch} settings={settings} />
       }/>
       <Drawer.Screen name="Add Todo" component={
         () => <AddTodo todoDispatch={todoDispatch} />

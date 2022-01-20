@@ -2,13 +2,16 @@ import * as React from 'react';
 import TodoItem from './TodoItem';
 import { ScrollView } from 'react-native';
 
-// TODO: Make components for pages
 const TodoList = (props) => {
-  const { todos, todoDispatch } = props
+  const { todos, todoDispatch, settings } = props
+
+  const shownTodos = !settings.hideCompleted 
+    ? todos.filter(item => !item.completed)
+    : todos
 
   return (
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
-      { todos.map(item => {
+      { shownTodos.map(item => {
         return (
           <TodoItem
             key={item.id}

@@ -11,6 +11,11 @@ export default function App() {
   const [theme, setTheme] = useState(scheme);
   const themeValue = { theme, setTheme };
 
+  // Todo Settings
+  const [settings, setSettings] = useState({
+    hideCompleted: true,
+  })
+
   const init = () => {
     return {
       activeTodo: {},
@@ -46,13 +51,6 @@ export default function App() {
 
   // Use Todo Reducer
   const [state, todoDispatch] = useReducer(reducer, undefined, init);
-
-  // Todo Settings
-  const [settings, setSettings] = useState({
-    todoItemsPerPage: 3,
-    hideCompletedItems: true,
-    softField: 'dueDate',
-  })
 
   return (
     <SafeAreaProvider>
