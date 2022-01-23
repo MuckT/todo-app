@@ -1,0 +1,77 @@
+{
+  "name": "todo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-navigation/drawer": "^6.1.8",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
+    "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "^2.1.1",
+    "react-native-reanimated": "^2.3.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.1",
+    "react-native-uuid": "^2.0.1",
+    "react-native-vector-icons": "^9.0.0",
+    "react-navigation-drawer": "^2.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/runtime": "^7.16.7",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "babel-jest": "^27.4.6",
+    "detox": "^19.4.2",
+    "eslint": "^8.6.0",
+    "jest": "^27.4.7",
+    "jest-html-reporter": "^3.4.2",
+    "jest-junit": "^13.0.0",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runnerConfig": "e2e/config.json",
+    "devices": {
+      "simulator": {
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 12 Pro Max"
+        }
+      }
+    },
+    "apps": {
+      "ios.release": {
+        "type": "ios.app",
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/todo.app",
+        "build": "set -o pipefail && xcodebuild -workspace ios/todo.xcworkspace -scheme todo -configuration Release -sdk iphonesimulator -derivedDataPath ios/build"
+      },
+      "ios.debug": {
+        "type": "ios.app",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/todo.app",
+        "build": "set -o pipefail && xcodebuild -workspace ios/todo.xcworkspace -scheme todo -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+      }
+    },
+    "configurations": {
+      "ios.sim.release": {
+        "device": "simulator",
+        "app": "ios.release"
+      },
+      "ios.sim.debug": {
+        "device": "simulator",
+        "app": "ios.debug"
+      }
+    }
+  }
+}
