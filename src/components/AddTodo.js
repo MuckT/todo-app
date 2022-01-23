@@ -1,7 +1,7 @@
-import { ScrollView } from 'react-native';
-import { Input, Button, Text, Slider, Icon } from 'react-native-elements';
-import React, { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
+import { Button, Icon, Input, Slider, Text } from 'react-native-elements';
 import uuid from 'react-native-uuid';
 
 const AddTodo = (props) => {
@@ -22,6 +22,10 @@ const AddTodo = (props) => {
         completed: false,
         id: `${uuid.v4()}`
       }
+    })
+    todoDispatch({
+      type: "save",
+      payload: {}
     })
   }
 

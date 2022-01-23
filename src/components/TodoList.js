@@ -1,6 +1,6 @@
-import * as React from 'react';
-import TodoItem from './TodoItem';
+import React from 'react';
 import { ScrollView } from 'react-native';
+import TodoItem from './TodoItem';
 
 const TodoList = (props) => {
   const { todos, todoDispatch, settings } = props

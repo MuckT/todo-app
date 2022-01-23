@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useTheme } from '@react-navigation/native';
-import * as React from 'react';
+import React from 'react';
 import AddTodo from '../components/AddTodo';
 import Settings from '../components/Settings';
 import TodoList from '../components/TodoList';
