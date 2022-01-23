@@ -1,8 +1,9 @@
 
-import { View, Text, Switch, StyleSheet } from 'react-native';
-import React, { useContext } from 'react';
-import ThemeContext from "../contexts/ThemeContext"
 import { useTheme } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import ThemeContext from "../contexts/ThemeContext";
+
 const Settings = (props) => {
   const {settings, setSettings} = props
   const { theme, setTheme } = useContext(ThemeContext)

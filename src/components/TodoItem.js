@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, Card, Button, Icon } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
+import React from 'react';
+import { Button, Card, Text } from 'react-native-elements';
 
 const TodoItem = (props) => {
   const { title, completed, description, difficulty, id, todoDispatch  } = props
@@ -13,6 +13,10 @@ const TodoItem = (props) => {
         id: id
       }
     })
+    todoDispatch({
+      type: "save",
+      payload: {}
+    })
   }
   
   const reopenTodo = () => {
@@ -21,6 +25,10 @@ const TodoItem = (props) => {
       payload: {
         id: id
       }
+    })
+    todoDispatch({
+      type: "save",
+      payload: {}
     })
   }
 
